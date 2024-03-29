@@ -1,0 +1,13 @@
+---
+- name: Install Certbot using Snap and generate HTTPS certificate
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Install Certbot via Snap
+      snap:
+        name: certbot
+        classic: yes
+
+    - name: Generate HTTPS certificate
+      command: certbot certonly --apache --non-interactive --agree-tos --email inaclicksuporte@gmail.com -d inaclick.com.br

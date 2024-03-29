@@ -1,0 +1,43 @@
+---
+- name: Update and secure Ubuntu 20.04 server
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade all packages
+      apt:
+        upgrade: yes
+        autoremove: yes
+        autoclean: yes
+
+    - name: Install UFW
+      apt:
+        name: ufw
+        state: present
+
+    - name: Allow SSH (port 22)
+      ufw:
+        rule: allow
+        port: 22
+
+    - name: Allow HTTP (port 80)
+      ufw:
+        rule: allow
+        port: 80
+
+    - name: Allow HTTPS (port 443)
+      ufw:
+        rule: allow
+        port: 443
+
+    - name: Close all other ports
+      ufw:
+        rule: deny
+
+    - name: Enable UFW
+      ufw:
+        state: enabled
