@@ -2,11 +2,6 @@
 - name: Inaclick VPS setup Ubuntu 20:04
   hosts: localhost
   tasks:
-    - name: Running initial setup
-      include_playbook: playbooks/initial_setup.yaml
-
-    - name: Creating HTTPS certificates
-      include_playbook: playbooks/creating_certificates.yaml
-
-    - name: Installing Docker
-      include_playbook: playbooks/installing_docker.yaml
+    - import_tasks: playbooks/initial_setup.yaml
+    - import_tasks: playbooks/creating_certificates.yaml
+    - import_tasks: playbooks/installing_docker.yaml

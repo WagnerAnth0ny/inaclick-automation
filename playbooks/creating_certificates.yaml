@@ -1,4 +1,3 @@
----
 - name: Install Certbot using Snap and generate HTTPS certificate
   hosts: localhost
   become: yes

@@ -1,4 +1,3 @@
----
 - name: Update and secure Ubuntu 20.04 server
   hosts: localhost
   become: yes

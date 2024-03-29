@@ -1,4 +1,3 @@
----
 - name: Install Docker and Docker Compose
   hosts: localhost
   become: true
