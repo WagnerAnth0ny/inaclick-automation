@@ -9,7 +9,7 @@
 
 - name: Copy Fail2Ban configuration file
   template:
-    src: /root/secrets/fail2ban/jail.local
+    src: ~/secrets/fail2ban/jail.local
     dest: /etc/fail2ban/jail.local
 
 - name: Restart fail2ban
