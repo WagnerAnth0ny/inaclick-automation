@@ -1,18 +1,17 @@
 - name: Ensure .ssh directory exists
-  file:
-    path: "~/.ssh"
-    state: directory
+      file:
+        path: "~/.ssh"
+        state: directory
 
-- name: Move id_ed25519 to .ssh directory
-  become: yes
-  shell: mv ~/secrets/github/id_ed25519 ~/.ssh/
+    - name: Move id_ed25519 to .ssh directory
+      become: yes
+      shell: cp ~/secrets/github/id_ed25519 ~/.ssh/
 
-- name: Move id_ed25519.pub to .ssh directory
-  become: yes
-  shell: mv ~/secrets/github/id_ed25519.pub ~/.ssh/
+    - name: Move id_ed25519.pub to .ssh directory
+      become: yes
+      shell: cp ~/secrets/github/id_ed25519.pub ~/.ssh/
 
-- name: Start the ssh-agent in the background
-  shell: eval "$(ssh-agent -s)"
-
-- name: Add id_ed25519 to SSH agent
-  shell: ssh-add ~/.ssh/id_ed25519
+    - name: Add id_ed25519 to SSH agent
+      shell: |
+        eval "$(ssh-agent)"
+        ssh-add ~/.ssh/id_ed25519
