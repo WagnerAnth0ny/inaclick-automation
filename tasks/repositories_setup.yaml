@@ -1,0 +1,21 @@
+- name: Clone inaclick backend service
+  git:
+    repo: git@github.com:zadhart/inaclickPythonApi.git
+    dest: ~/inaclickPythonApi
+
+- name: Copy certificates to the backend service
+  become: yes
+  shell: |
+    cp /etc/lestencrypt/live/inaclick.com.br/fullchain.pem ~/inaclickPythonApi/
+    cp /etc/lestencrypt/live/inaclick.com.br/privkey.pem ~/inaclickPythonApi/
+
+- name: Clone inaclick web
+  git:
+    repo: git@github.com:Lauzzener/inaclickWeb.git
+    dest: ~/inaclickWeb
+
+- name: Copy certificates to the web service
+  become: yes
+  shell: |
+    cp /etc/lestencrypt/live/inaclick.com.br/fullchain.pem ~/inaclickWeb/
+    cp /etc/lestencrypt/live/inaclick.com.br/privkey.pem ~/inaclickWeb/

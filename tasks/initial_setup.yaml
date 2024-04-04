@@ -23,6 +23,11 @@
     rule: allow
     port: 80
 
+- name: Allow port 8000
+  ufw:
+    rule: allow
+    port: 8000
+
 - name: Allow HTTPS (port 443)
   ufw:
     rule: allow
