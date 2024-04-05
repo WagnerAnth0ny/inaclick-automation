@@ -1,7 +1,8 @@
-- name: Install Nginx
-  apt:
-    name: nginx
-    state: present
+- name: Move inaclick.com.br conf to nginx directory
+  become: yes
+  shell: |
+    rm -rf /etc/nginx/sites-enabled/*.com.br
+    rm -rf /etc/nginx/sites-available/*.com.br
 
 - name: Move inaclick.com.br conf to nginx directory
   become: yes
