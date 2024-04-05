@@ -1,7 +1,15 @@
+- name: Remove old versions of repositories
+  shell: | 
+    rm -rf ~/inaclickPythonApi
+    rm -rf ~/inaclickWeb
+
 - name: Clone inaclick backend service
   git:
     repo: git@github.com:zadhart/inaclickPythonApi.git
     dest: ~/inaclickPythonApi
+
+- name: Move .env to inaclick backend directory
+  shell: cp ~/secrets/env/.env ~/inaclickPythonApi
 
 - name: Clone inaclick web
   git:
