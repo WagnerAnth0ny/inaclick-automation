@@ -3,7 +3,7 @@
   hosts: localhost
   tasks:
     - import_tasks: tasks/initial_setup.yaml
+    - import_tasks: tasks/nginx_setup.yaml
     - import_tasks: tasks/creating_certificates.yaml
     - import_tasks: tasks/installing_docker.yaml
     - import_tasks: tasks/github_setup.yaml
-    - import_tasks: tasks/repositories_setup.yaml

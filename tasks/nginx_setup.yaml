@@ -1,0 +1,23 @@
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Move inaclick.com.br conf to nginx directory
+  become: yes
+  shell: |
+    cp ~/secrets/nginx/inaclick.com.br /etc/nginx/sites-available/
+    cp ~/secrets/nginx/api.inaclick.com.br /etc/nginx/sites-available/
+    cp ~/secrets/nginx/dashboard.inaclick.com.br /etc/nginx/sites-available/
+
+- name: Creating symbolic links
+  become: yes
+  shell: |
+    sudo ln -s /etc/nginx/sites-available/inaclick.com.br /etc/nginx/sites-enabled/
+    sudo ln -s /etc/nginx/sites-available/api.inaclick.com.br /etc/nginx/sites-enabled/
+    sudo ln -s /etc/nginx/sites-available/dashboard.inaclick.com.br /etc/nginx/sites-enabled/
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted

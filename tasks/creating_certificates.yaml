@@ -4,4 +4,9 @@
     classic: yes
 
 - name: Generate HTTPS certificate
-  command: certbot certonly --standalone --non-interactive --agree-tos --email suporteinaclick@gmail.com -d inaclick.com.br
+  command: certbot certonly --nginx --non-interactive --agree-tos --email suporteinaclick@gmail.com -d inaclick.com.br -d api.inaclick.com.br -d dashboard.inaclick.com.br
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
